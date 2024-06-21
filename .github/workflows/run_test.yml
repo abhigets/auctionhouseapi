@@ -1,0 +1,30 @@
+name: Run Pytest
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  run-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Create, activate virtual environment and install dependencies
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        pip install -r requirements.txt
+               
+    - name: Run fake api test with pytest
+      run: pytest -v task_warrier/
+         
+    - name: Run task warrier test with pytest
+      run: pytest -v task_warrier/
