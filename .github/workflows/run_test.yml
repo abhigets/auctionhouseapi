@@ -19,12 +19,9 @@ jobs:
 
     - name: Create, activate virtual environment and install dependencies
       run: |
-        python -m venv venv
-        source venv/bin/activate
+        # python -m venv venv
+        # source venv/bin/activate
         pip install -r requirements.txt
                
-    - name: Run fake api test with pytest
-      run: pytest -v task_warrier/
-         
-    - name: Run task warrier test with pytest
-      run: pytest -v task_warrier/
+    - name: Run test with pytest
+      run: pytest -v python/
